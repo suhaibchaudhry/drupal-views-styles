@@ -155,26 +155,20 @@ function options_validate(&$form, &$form_state) {
   parent::options_validate($form, $form_state);
   $options = &$form_state['values']['style_options'];
 
-  if (!is_numeric($options['max_width'])) {
-    form_error($form['max_width'], t('Please specify a numerical value for Max Width'));
+  if (!is_numeric($options['content_height'])) {
+    form_error($form['content_height'], t('Please specify a numerical value for Content Height.'));
   }
-  if (!is_numeric($options['min_width'])) {
-      form_error($form['min_width'], t('Please specify a numerical value for Min Width'));
+  if (!is_numeric($options['header_size'])) {
+      form_error($form['header_size'], t('Please specify a numerical value for Header Size.'));
   }
-  if (!is_numeric($options['animate_in'])) {
-      form_error($form['animate_in'], t('Please specify a numerical value for Animate In'));
+  if (!is_numeric($options['header_font_size'])) {
+      form_error($form['header_font_size'], t('Please specify a numerical value for Header Font Size.'));
   }
-  if (!is_numeric($options['animate_out'])) {
-    form_error($form['animate_out'], t('Please specify a numerical value for Animate Out'));
+  if (!is_numeric($options['activated_index'])) {
+    form_error($form['activated_index'], t('Please specify a numerical value for Activated Index.'));
   }
-  if (!is_numeric($options['activated_item'])) {
-    form_error($form['activated_item'], t('Please specify a numerical value for Activated Item'));
-  }
-   if (!is_numeric($options['caption_field_fadein'])) {
-    form_error($form['activated_item'], t('Please specify a numerical value for fade in'));
-  }
-   if (!is_numeric($options['caption_field_fadeout'])) {
-    form_error($form['activated_item'], t('Please specify a numerical value for fade out'));
+  if (!is_numeric($options['animation_duration'])) {
+    form_error($form['animation_duration'], t('Please specify a numerical value for Animation Druation.'));
   }
 }
 

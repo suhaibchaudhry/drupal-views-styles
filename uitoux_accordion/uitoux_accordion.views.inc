@@ -16,7 +16,7 @@ function uitoux_accordion_views_plugins() {
     'module' => 'uitoux_accordion',
     'style' => array (
         'uitoux_accordion_zozo' => array(
-          'title' => t('UIToUX Zozo Accordion'),
+          'title' => t('Horizontal Accordion - UIToUX'),
           'help' => t('Displays Content with a Horizontal Slider Effect.'),
           'handler' => 'views_uitoux_accordion_zozo_style_plugin',
           'uses row plugin' => TRUE,

@@ -12,16 +12,16 @@ class views_uitoux_accordion_zozo_style_plugin extends views_plugin_style {
   function option_definition() {
     $options = parent::option_definition();
 
-    $options['animate_in']  =  array('default' => 400);
-    $options['animate_out'] =  array('default' => 400);
-    $options['min_width']   = array('default' => 100);
-    $options['max_width']   =  array('default' => 300);
-    $options['activated_item']   =  array('default' => 2);
+    $options['accordion_theme']  =  array('default' => "crystal");
+    $options['content_height'] =  array('default' => 150);
 
-    $options['caption_field_name']   =  array('default' => '');
-    $options['caption_field_fadein']   =  array('default' => 500);
-    $options['caption_field_fadeout']   =  array('default' => 500);
-    
+    $options['header_size']   = array('default' => 52);
+    $options['header_font_size'] =  array('default' => '1.5');
+
+    $options['activated_index'] =  array('default' => 0);
+
+    $options['animation_duration'] =  array('default' => 600);
+
     return $options;
   }
 
@@ -31,71 +31,70 @@ function options_form(&$form, &$form_state) {
   unset($form['grouping']);
   //unset($form['type']);
 
-  $form['animate_in'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Animate In'),
+  $form['accordion_theme'] = array(
+    '#type' => 'select',
+    '#title' => t('Accordion Theme'),
     '#required' => TRUE,
-    '#description' => t('Specify the Animation In Speed'),
-    '#default_value' => $this->options['animate_in'],
-    );
+    '#options' => array(
+      "crystal" => "Crystal",
+      "gray" => "Gray",
+      "black" => "Black", 
+      "blue" => "Blue", 
+      "white" => "White", 
+      "lightblue" => "Light Blue", 
+      "deepblue" => "Deep Blue",
+      "green" => "Green",
+      "yellow" => "Yellow",
+      "purple" =>"Purple",
+      "silver" => "Silver",
+      "red" => "Red",
+      "orange" =>"Orange",
+      "clean" =>"Clean" 
+    ),
+    '#description' => t('Select an accordion theme.'),
+    '#default_value' => $this->options['accordion_theme'],
+  );
 
-  $form['animate_out'] = array(
+  $form['content_height'] = array(
     '#type' => 'textfield',
-    '#title' => t('Animate Out'),
+    '#title' => t('Content Height'),
     '#required' => TRUE,
-    '#description' => t('Specify the Animation Out Speed'),
-    '#default_value' => $this->options['animate_out'],
-    );
+    '#description' => t('Specify the Accordion Content Height'),
+    '#default_value' => $this->options['content_height'],
+  );
 
-  $form['min_width'] = array(
+  $form['header_size'] = array(
     '#type' => 'textfield',
-    '#title' => t('Min Width'),
+    '#title' => t('Header Size'),
     '#required' => TRUE,
-    '#description' => t('Minimum width of an image/item'),
-    '#default_value' => $this->options['min_width'],
-    );
-  
-  $form['max_width'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Max Width'),
-    '#required' => TRUE,
-    '#description' => t('Maximum width of an image/item'),
-    '#default_value' => $this->options['max_width'],
-    );
+    '#description' => t('Header size for verticle bar.'),
+    '#default_value' => $this->options['header_size'],
+  );
 
-   $form['activated_item'] = array(
+  $form['header_font_size'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Header Font Size'),
+    '#required' => TRUE,
+    '#description' => t('Font size for verticle bar.'),
+    '#default_value' => $this->options['header_font_size'],
+  );
+
+   $form['activated_index'] = array(
     '#type' => 'textfield',
     '#title' => t('Active Item'),
-    '#required' => FALSE,
-    '#description' => t('The item that is active on page load. Start: 1 to the number of images/items you have. '),
-    '#default_value' => $this->options['activated_item'],
-    );
+    '#required' => TRUE,
+    '#description' => t('The item that is active on page load, starting from 0.'),
+    '#default_value' => $this->options['activated_index'],
+   );
 
-   $form['caption_field_name'] = array(
+   $form['animation_duration'] = array(
     '#type' => 'textfield',
-    '#title' => t('Caption field name'),
-    '#required' => FALSE,
-    '#description' => t('Name of the field that will be used as caption. You only need that if you want to fade in a caption on hover. You can get the field name out of the html code (for "example views-field-title"). Leave empty if not used.'),
-    '#default_value' => $this->options['caption_field_name'],
-    );
-
-   $form['caption_field_fadein'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Caption field Fade in speed'),
-    '#required' => FALSE,
-    '#description' => t('Fade in speed '),
-    '#default_value' => $this->options['caption_field_fadein'],
-    );
-
-   $form['caption_field_fadeout'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Caption field Fade out speed'),
-    '#required' => FALSE,
-    '#description' => t('Fade out speed '),
-    '#default_value' => $this->options['caption_field_fadeout'],
-    );
-
-  }
+    '#title' => t('Animation Duration'),
+    '#required' => TRUE,
+    '#description' => t('The amount of time in ms to run animation for.'),
+    '#default_value' => $this->options['animation_duration'],
+   );
+}
 
 //Validating the inputs
 //@TODO validation

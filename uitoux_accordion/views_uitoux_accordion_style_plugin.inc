@@ -6,7 +6,7 @@
  */
 
 
-class uitoux_accordion_zozo_style_plugin extends views_plugin_style {
+class views_uitoux_accordion_zozo_style_plugin extends views_plugin_style {
   
   //default options
   function option_definition() {

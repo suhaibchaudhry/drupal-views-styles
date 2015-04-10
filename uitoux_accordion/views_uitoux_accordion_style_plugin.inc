@@ -22,6 +22,8 @@ class views_uitoux_accordion_zozo_style_plugin extends views_plugin_style {
 
     $options['animation_duration'] =  array('default' => 600);
 
+    $options['animation_easing'] = array('default' => 'linear');
+
     return $options;
   }
 
@@ -52,7 +54,7 @@ function options_form(&$form, &$form_state) {
       "clean" =>"Clean" 
     ),
     '#description' => t('Select an accordion theme.'),
-    '#default_value' => $this->options['accordion_theme'],
+    '#default_value' => $this->options['accordion_theme']
   );
 
   $form['content_height'] = array(
@@ -60,7 +62,7 @@ function options_form(&$form, &$form_state) {
     '#title' => t('Content Height'),
     '#required' => TRUE,
     '#description' => t('Specify the Accordion Content Height'),
-    '#default_value' => $this->options['content_height'],
+    '#default_value' => $this->options['content_height']
   );
 
   $form['header_size'] = array(
@@ -68,7 +70,7 @@ function options_form(&$form, &$form_state) {
     '#title' => t('Header Size'),
     '#required' => TRUE,
     '#description' => t('Header size for verticle bar.'),
-    '#default_value' => $this->options['header_size'],
+    '#default_value' => $this->options['header_size']
   );
 
   $form['header_font_size'] = array(
@@ -76,7 +78,7 @@ function options_form(&$form, &$form_state) {
     '#title' => t('Header Font Size'),
     '#required' => TRUE,
     '#description' => t('Font size for verticle bar.'),
-    '#default_value' => $this->options['header_font_size'],
+    '#default_value' => $this->options['header_font_size']
   );
 
    $form['activated_index'] = array(
@@ -84,7 +86,7 @@ function options_form(&$form, &$form_state) {
     '#title' => t('Active Item'),
     '#required' => TRUE,
     '#description' => t('The item that is active on page load, starting from 0.'),
-    '#default_value' => $this->options['activated_index'],
+    '#default_value' => $this->options['activated_index']
    );
 
    $form['animation_duration'] = array(
@@ -92,8 +94,56 @@ function options_form(&$form, &$form_state) {
     '#title' => t('Animation Duration'),
     '#required' => TRUE,
     '#description' => t('The amount of time in ms to run animation for.'),
-    '#default_value' => $this->options['animation_duration'],
+    '#default_value' => $this->options['animation_duration']
    );
+
+   $lib = libraries_detect('easing');
+   $easing = array(
+        "linear" => t('Linear'),
+        "swing" => t('Swing')
+   );
+
+   if($lib['installed']) {
+      $easing['easeInQuad'] = t('easeInQuad');
+      $easing['easeOutQuad'] = t('easeOutQuad');
+      $easing['easeInOutQuad'] = t('easeInOutQuad');
+      $easing['easeInCubic'] = t('easeInCubic');
+      $easing['easeInCubic'] = t('easeInCubic');
+      $easing['easeInOutCubic'] = t('easeInOutCubic');
+      $easing['easeInOutCubic'] = t('easeInOutCubic');
+      $easing['easeOutQuart'] = t('easeOutQuart');
+      $easing['easeInOutQuart'] = t('easeInOutQuart');
+      $easing['easeInQuint'] = t('easeInQuint');
+      $easing['easeOutQuint'] = t('easeOutQuint');
+      $easing['easeInOutQuint'] = t('easeInOutQuint');
+      $easing['easeInSine'] = t('easeInSine');
+      $easing['easeOutSine'] = t('easeOutSine');
+      $easing['easeInOutSine'] = t('easeInOutSine');
+      $easing['easeInExpo'] = t('easeInExpo');
+      $easing['easeOutExpo'] = t('easeOutExpo');
+      $easing['easeInOutExpo'] = t('easeInOutExpo');
+      $easing['easeInCirc'] = t('easeInCirc');
+      $easing['easeOutCirc'] = t('easeOutCirc');
+      $easing['easeInOutCirc'] = t('easeInOutCirc');
+      $easing['easeInElastic'] = t('easeInElastic');
+      $easing['easeOutElastic'] = t('easeOutElastic');
+      $easing['easeInOutElastic'] = t('easeInOutElastic');
+      $easing['easeInBack'] = t('easeInBack');
+      $easing['easeOutBack'] = t('easeOutBack');
+      $easing['easeInOutBack'] = t('easeInOutBack');
+      $easing['easeInBounce'] = t('easeInBounce');
+      $easing['easeOutBounce'] = t('easeOutBounce');
+      $easing['easeInOutBounce'] = t('easeInOutBounce');
+   }
+
+   $form['animation_easing'] = array(
+    '#type' => 'select',
+    '#title' => t('Animation Easing'),
+    '#required' => TRUE,
+    '#options' => $easing,
+    '#description' => t('Select an easing type for animation. Install jQuery Easing module and library to get all options.'),
+    '#default_value' => $this->options['animation_easing']
+  );
 }
 
 //Validating the inputs

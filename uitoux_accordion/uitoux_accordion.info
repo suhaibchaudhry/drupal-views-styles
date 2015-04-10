@@ -1,0 +1,5 @@
+name = Zozo Accordion
+description = "Zozo horizontal accordion views integration by UI To UX INC."
+package = UI To UX - Display Widgets
+core = 7.x
+files[] = uitoux_accordion.module

@@ -7,10 +7,22 @@ function uitoux_accordion_views_api() {
 }
 
 function template_preprocess_views_uitoux_accordion_view(&$variables) {
-  /*$options['views_horizontal_slider'] = $variables['options'];
-  $path = drupal_get_path('module', 'views_horizontal_slider');
+  $options = array('views_uitoux_accordion' => $variables['options']);
+  $path = drupal_get_path('module', 'uitoux_accordion');
 
-  drupal_add_js($path . '/slider.js');
+  $lib = libraries_detect('easing');
+  if($lib['installed']) {
+  	foreach($lib['files'] as $type => $files) {
+  		if($type == 'js') {
+	  		foreach($files as $js_file => $det) {
+	  			drupal_add_js($lib['library path'].'/'.$js_file);
+	  		}
+  		}
+  	}
+  }
+
+  drupal_add_js($path . '/js/zozo.accordion.min.js');
   drupal_add_js($options, 'setting');
-  drupal_add_css($path . '/views_horizontal_slider.css');*/
+  drupal_add_css($path . '/css/zozo.accordion.min.css');
+  drupal_add_css($path . '/css/zozo.styles.min.css');
 }

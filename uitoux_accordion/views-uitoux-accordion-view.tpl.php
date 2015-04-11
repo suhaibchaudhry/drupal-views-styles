@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file views-view-horizontal-slider.tpl.php
+ * @file views-uitoux-accordion-view.tpl.php
  * Default simple view template to display a list of rows.
  *
  * - $title : The title of this group of rows.  May be empty.

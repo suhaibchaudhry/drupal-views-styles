@@ -7,15 +7,31 @@ function uitoux_accordion_views_api() {
 }
 
 function template_preprocess_views_uitoux_accordion_view(&$variables) {
-  $options = array('views_uitoux_accordion' => $variables['options']);
+  $view = $variables['view'];
+  $options = $view->style_plugin->options;
+  $label_field = $options['label_field'];
+  $handler  = $view->style_plugin;
+
+  $js_options = array('views_uitoux_accordion' => $variables['options']);
   $path = drupal_get_path('module', 'uitoux_accordion');
+  $tab_titles = array();
 
   _uitoux_library_load('easing');
 
   drupal_add_js($path . '/js/zozo.accordion.min.js');
-  drupal_add_js($options, 'setting');
+  drupal_add_js($js_options, 'setting');
   drupal_add_css($path . '/css/zozo.accordion.min.css');
   drupal_add_css($path . '/css/zozo.styles.min.css');
+
+  foreach($view->result as $num => $row) {
+	  if($label_field) {
+	  	$tab_titles[$num] = $handler->rendered_fields[$num][$label_field];
+	  } else {
+	  	$tab_titles[$num] = 'Slide '.$num;
+	  }
+  }
+
+  $variables['tab_titles'] = $tab_titles;
 }
 
 function _uitoux_library_load($name) {

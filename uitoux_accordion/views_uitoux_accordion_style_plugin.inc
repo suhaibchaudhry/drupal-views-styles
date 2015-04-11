@@ -12,6 +12,11 @@ class views_uitoux_accordion_zozo_style_plugin extends views_plugin_style {
   function option_definition() {
     $options = parent::option_definition();
 
+    $options['min_window_width']  =  array('default' => 700);
+
+    $options['responsive'] = array('default' => true);
+    $options['scrollable'] = array('default' => true);
+
     $options['accordion_theme']  =  array('default' => "crystal");
     $options['content_height'] =  array('default' => 150);
 
@@ -45,6 +50,38 @@ function options_form(&$form, &$form_state) {
 
   unset($form['grouping']);
   //unset($form['type']);
+
+  $form['min_window_width'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Minimum Window Width'),
+    '#required' => TRUE,
+    '#description' => t('Specify the Accordion Content Height'),
+    '#default_value' => $this->options['min_window_width']
+  );
+
+  $form['responsive'] = array(
+    '#type' => 'select',
+    '#title' => t('Responsive'),
+    '#required' => TRUE,
+    '#options' => array(
+      true => "Yes",
+      false => "No"
+    ),
+    '#description' => t('Select wether the widget will response to screen size changes.'),
+    '#default_value' => $this->options['responsive']
+  );
+
+  $form['scrollable'] = array(
+    '#type' => 'select',
+    '#title' => t('Scrollable'),
+    '#required' => TRUE,
+    '#options' => array(
+      true => "Yes",
+      false => "No"
+    ),
+    '#description' => t('Select wether the widget will be scrollable.'),
+    '#default_value' => $this->options['scrollable']
+  );
 
   $form['accordion_theme'] = array(
     '#type' => 'select',

@@ -2,5 +2,6 @@ name = Zozo Accordion
 description = "Zozo horizontal accordion views integration by UI To UX INC."
 package = UI To UX - Display Widgets
 core = 7.x
+dependencies[] = jquery_update
 files[] = uitoux_accordion.module
 files[] = views_uitoux_accordion_style_plugin.inc

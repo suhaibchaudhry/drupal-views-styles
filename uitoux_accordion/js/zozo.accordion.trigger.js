@@ -4,7 +4,7 @@
 			$(".views_uitoux_accordion ul.views-uitoux-accordion").zozoAccordion({
                 theme: settings.views_uitoux_accordion.accordion_theme,
                 orientation: "horizontal",
-                active: 1,
+                active: parseInt(settings.views_uitoux_accordion.activated_index),
                 contentHeight: parseFloat(settings.views_uitoux_accordion.content_height),
                 headerSize: parseFloat(settings.views_uitoux_accordion.header_size),
                 headerFontSize: parseFloat(settings.views_uitoux_accordion.header_font_size),
@@ -14,7 +14,8 @@
                 animation: {
                     easing: settings.views_uitoux_accordion.animation_easing,
                     duration: parseInt(settings.views_uitoux_accordion.animation_duration)
-                }
+                },
+                width: parseFloat(settings.views_uitoux_accordion.max_accordion_width)
             });
 		}
 	};

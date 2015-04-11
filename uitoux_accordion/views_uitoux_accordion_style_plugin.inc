@@ -12,6 +12,7 @@ class views_uitoux_accordion_zozo_style_plugin extends views_plugin_style {
   function option_definition() {
     $options = parent::option_definition();
 
+    $options['max_accordion_width'] = array('default' => 1180);
     $options['min_window_width']  =  array('default' => 700);
 
     $options['responsive'] = array('default' => true);
@@ -51,11 +52,19 @@ function options_form(&$form, &$form_state) {
   unset($form['grouping']);
   //unset($form['type']);
 
+  $form['max_accordion_width'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Initial Width'),
+    '#required' => TRUE,
+    '#description' => t('Specify the initial maximum accordion width.'),
+    '#default_value' => $this->options['max_accordion_width']
+  );
+
   $form['min_window_width'] = array(
     '#type' => 'textfield',
     '#title' => t('Minimum Window Width'),
     '#required' => TRUE,
-    '#description' => t('Specify the Accordion Content Height'),
+    '#description' => t('Specify the minimum responsive accordion width.'),
     '#default_value' => $this->options['min_window_width']
   );
 

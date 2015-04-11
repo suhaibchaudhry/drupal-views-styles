@@ -20,8 +20,7 @@ function template_preprocess_views_uitoux_accordion_view(&$variables) {
 
   drupal_add_js($path . '/js/zozo.accordion.min.js');
   drupal_add_js($js_options, 'setting');
-  drupal_add_css($path . '/css/zozo.accordion.min.css');
-  drupal_add_css($path . '/css/zozo.styles.min.css');
+  drupal_add_css($path . '/css/zozo.accordion.css');
 
   foreach($view->result as $num => $row) {
 	  if($label_field) {

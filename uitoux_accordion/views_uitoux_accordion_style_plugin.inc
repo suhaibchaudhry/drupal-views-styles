@@ -64,8 +64,8 @@ function options_form(&$form, &$form_state) {
     '#title' => t('Responsive'),
     '#required' => TRUE,
     '#options' => array(
-      true => "Yes",
-      false => "No"
+      "1" => "Yes",
+      "0" => "No"
     ),
     '#description' => t('Select wether the widget will response to screen size changes.'),
     '#default_value' => $this->options['responsive']
@@ -76,8 +76,8 @@ function options_form(&$form, &$form_state) {
     '#title' => t('Scrollable'),
     '#required' => TRUE,
     '#options' => array(
-      true => "Yes",
-      false => "No"
+      "1" => "Yes",
+      "0" => "No"
     ),
     '#description' => t('Select wether the widget will be scrollable.'),
     '#default_value' => $this->options['scrollable']

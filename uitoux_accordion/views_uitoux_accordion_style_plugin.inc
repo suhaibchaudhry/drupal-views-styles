@@ -24,11 +24,24 @@ class views_uitoux_accordion_zozo_style_plugin extends views_plugin_style {
 
     $options['animation_easing'] = array('default' => 'linear');
 
+    $options['label_field'] = array('default' => '');
+
     return $options;
   }
 
 function options_form(&$form, &$form_state) {
   parent::options_form($form, $form_state);
+
+  // Pre-build all of our option lists for the dials and switches that follow.
+  $fields = array('' => t('<None>'));
+  foreach ($this->display->handler->get_handlers('field') as $field => $handler) {
+    if ($label = $handler->label()) {
+      $fields[$field] = $label;
+    }
+    else {
+      $fields[$field] = $handler->ui_name();
+    }
+  }
 
   unset($form['grouping']);
   //unset($form['type']);
@@ -143,6 +156,14 @@ function options_form(&$form, &$form_state) {
     '#options' => $easing,
     '#description' => t('Select an easing type for animation. Install jQuery Easing module and library to get all options.'),
     '#default_value' => $this->options['animation_easing']
+  );
+
+  $form['label_field'] = array(
+    '#type' => 'select',
+    '#title' => t('Label Field'),
+    '#options' => $fields,
+    '#default_value' => $this->options['label_field'],
+    '#description' => t('Select the field that will be used as the label field for each accordion slide. If none is selected slides will be numbered by their index.'),
   );
 }
 

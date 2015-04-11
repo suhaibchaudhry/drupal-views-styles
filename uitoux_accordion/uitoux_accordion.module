@@ -19,6 +19,7 @@ function template_preprocess_views_uitoux_accordion_view(&$variables) {
   _uitoux_library_load('easing');
 
   drupal_add_js($path . '/js/zozo.accordion.min.js');
+  drupal_add_js($path . '/js/zozo.accordion.trigger.js');
   drupal_add_js($js_options, 'setting');
   drupal_add_css($path . '/css/zozo.accordion.css');
 

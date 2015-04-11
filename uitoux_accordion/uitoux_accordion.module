@@ -10,7 +10,16 @@ function template_preprocess_views_uitoux_accordion_view(&$variables) {
   $options = array('views_uitoux_accordion' => $variables['options']);
   $path = drupal_get_path('module', 'uitoux_accordion');
 
-  $lib = libraries_detect('easing');
+  _uitoux_library_load('easing');
+
+  drupal_add_js($path . '/js/zozo.accordion.min.js');
+  drupal_add_js($options, 'setting');
+  drupal_add_css($path . '/css/zozo.accordion.min.css');
+  drupal_add_css($path . '/css/zozo.styles.min.css');
+}
+
+function _uitoux_library_load($name) {
+  $lib = libraries_detect($name);
   if($lib['installed']) {
   	foreach($lib['files'] as $type => $files) {
   		if($type == 'js') {
@@ -20,9 +29,4 @@ function template_preprocess_views_uitoux_accordion_view(&$variables) {
   		}
   	}
   }
-
-  drupal_add_js($path . '/js/zozo.accordion.min.js');
-  drupal_add_js($options, 'setting');
-  drupal_add_css($path . '/css/zozo.accordion.min.css');
-  drupal_add_css($path . '/css/zozo.styles.min.css');
 }

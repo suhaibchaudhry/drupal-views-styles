@@ -1,5 +1,5 @@
 name = Zozo Accordion
-description = "Zozo horizontal accordion views integration by UI To UX INC."
+description = "Zozo horizontal accordion views integration by UI To UX INC. Optional: jqeasing module is a soft dependency for a complete collection of animations."
 package = UI To UX - Display Widgets
 core = 7.x
 dependencies[] = jquery_update

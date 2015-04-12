@@ -56,7 +56,7 @@ function options_form(&$form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Initial Width'),
     '#required' => TRUE,
-    '#description' => t('Specify the initial maximum accordion width.'),
+    '#description' => t('Specify the initial maximum accordion width <strong>(Units: px)</strong>.'),
     '#default_value' => $this->options['max_accordion_width']
   );
 
@@ -64,7 +64,7 @@ function options_form(&$form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Minimum Window Width'),
     '#required' => TRUE,
-    '#description' => t('Specify the minimum responsive accordion width.'),
+    '#description' => t('Specify the minimum responsive accordion width <strong>(Units: px)</strong>.'),
     '#default_value' => $this->options['min_window_width']
   );
 
@@ -120,7 +120,7 @@ function options_form(&$form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Content Height'),
     '#required' => TRUE,
-    '#description' => t('Specify the Accordion Content Height'),
+    '#description' => t('Specify the accordion content height <strong>(Units: px)</strong>.'),
     '#default_value' => $this->options['content_height']
   );
 
@@ -128,7 +128,7 @@ function options_form(&$form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Header Size'),
     '#required' => TRUE,
-    '#description' => t('Header size for verticle bar.'),
+    '#description' => t('Header size for verticle bar <strong>(Units: px)</strong>.'),
     '#default_value' => $this->options['header_size']
   );
 
@@ -136,7 +136,7 @@ function options_form(&$form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Header Font Size'),
     '#required' => TRUE,
-    '#description' => t('Font size for verticle bar.'),
+    '#description' => t('Font size for verticle bar <strong>(Units: em)</strong>.'),
     '#default_value' => $this->options['header_font_size']
   );
 
@@ -152,7 +152,7 @@ function options_form(&$form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Animation Duration'),
     '#required' => TRUE,
-    '#description' => t('The amount of time in ms to run animation for.'),
+    '#description' => t('The amount of time to run animation for <strong>(Units: ms)</strong>.'),
     '#default_value' => $this->options['animation_duration']
    );
 

@@ -15,8 +15,8 @@ class views_uitoux_accordion_zozo_style_plugin extends views_plugin_style {
     $options['max_accordion_width'] = array('default' => 1180);
     $options['min_window_width']  =  array('default' => 700);
 
-    $options['responsive'] = array('default' => true);
-    $options['scrollable'] = array('default' => true);
+    $options['responsive'] = array('default' => "1");
+    $options['scrollable'] = array('default' => "1");
 
     $options['accordion_theme']  =  array('default' => "crystal");
     $options['content_height'] =  array('default' => 150);

@@ -5,7 +5,7 @@
                 theme: settings.views_uitoux_accordion.accordion_theme,
                 orientation: "horizontal",
                 active: parseInt(settings.views_uitoux_accordion.activated_index),
-                contentHeight: parseFloat(settings.views_uitoux_accordion.content_height),
+                height: parseFloat(settings.views_uitoux_accordion.content_height),
                 headerSize: parseFloat(settings.views_uitoux_accordion.header_size),
                 headerFontSize: parseFloat(settings.views_uitoux_accordion.header_font_size),
                 responsive: settings.views_uitoux_accordion.responsive == "1",

@@ -12,7 +12,7 @@
  */
 ?>
 <div class="views_uitoux_accordion views_uitoux_accordion-<?php print $view->vid; ?>">
-  <ul id="uitoux-accordion" class="views-uitoux-accordion">
+  <ul id="uitoux-accordion-<?php print $view->vid; ?>" class="views-uitoux-accordion">
     <?php foreach ($rows as $id => $row): ?>
       <li>
         <h3><?php print $tab_titles[$id]; ?></h3>
